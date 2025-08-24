@@ -191,7 +191,7 @@ function AutismForm({ goBack }) {
         console.warn('Missing or empty fields:', missingFields);
       }
 
-      const response = await fetch('https://autismscope.onrender.com/', {
+      const response = await fetch('https://autismscope.onrender.com/predict', {
         method: 'POST',
         body: formData,
         headers: {
