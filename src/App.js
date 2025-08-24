@@ -2,6 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 const scores = ['A1_Score', 'A2_Score', 'A3_Score', 'A4_Score', 'A5_Score', 'A6_Score', 'A7_Score', 'A8_Score', 'A9_Score', 'A10_Score'];
+const questions = {
+  'A1_Score': 'I often notice small sounds when others do not.',
+  'A2_Score': 'I usually concentrate more on the whole picture, rather than the small details.',
+  'A3_Score': 'I find it easy to do more than one thing at once.',
+  'A4_Score': 'If there is an interruption, I can switch back to what I was doing very quickly.',
+  'A5_Score': 'I find it easy to \'read between the lines\' when someone is talking to me.',
+  'A6_Score': 'I know how to tell if someone listening to me is getting bored.',
+  'A7_Score': 'When I\'m reading a story, I find it difficult to work out the characters\' intentions.',
+  'A8_Score': 'I like to collect information about categories of things (e.g., car types, birds, trains, plants).',
+  'A9_Score': 'I find it easy to work out what someone is thinking or feeling just by looking at their face.',
+  'A10_Score': 'I find it difficult to work out people\'s intentions.'
+};
 const genders = ['m', 'f'];
 const ethnicities = ['White-European', 'Latino', 'Others', 'Middle Eastern', 'South Asian', 'Asian', 'Black', 'Mixed', 'Hispanic', 'Turkish', 'others'];
 const jaundice = ['yes', 'no'];
@@ -25,7 +37,7 @@ const countries = [
   'New Caledonia', 'French Polynesia', 'Samoa', 'Tonga', 'Tuvalu', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Palau', 'Nauru'
 ];
 
-function CursorTrail() {
+/*function CursorTrail() {
   const canvasRef = useRef(null);
   const particlesRef = useRef([]);
   const mouseRef = useRef({ x: null, y: null });
@@ -116,7 +128,6 @@ function CursorTrail() {
       }
     };
   }, []);
-
   return (
     <canvas
       ref={canvasRef}
@@ -129,7 +140,7 @@ function CursorTrail() {
       }}
     />
   );
-}
+}*/
 
 function AutismForm({ goBack }) {
   const [form, setForm] = useState({
@@ -284,7 +295,7 @@ function AutismForm({ goBack }) {
               <div className="scores-grid">
                 {scores.map((score, idx) => (
                   <div key={score} className="form-group">
-                    <label>{score.replace('_Score', '')}:</label>
+                    <label>{questions[score]}</label>
                     <div className="radio-group">
                       <label className="radio-label">
                         <input
@@ -295,7 +306,7 @@ function AutismForm({ goBack }) {
                           onChange={handleChange}
                           required
                         />
-                        1
+                        Agree
                       </label>
                       <label className="radio-label">
                         <input
@@ -306,7 +317,7 @@ function AutismForm({ goBack }) {
                           onChange={handleChange}
                           required
                         />
-                        0
+                        Disagree
                       </label>
                     </div>
                   </div>
@@ -372,7 +383,7 @@ function AutismForm({ goBack }) {
                 </select>
               </div>
               <div className="form-group full-width">
-                <label>Score for AQ1-10 screening test:</label>
+                <label>Count of Agrees:</label>
                 <input type="number" name="aqScore" value={form.aqScore} onChange={handleChange} required />
               </div>
               <div className="form-group full-width">
@@ -397,13 +408,13 @@ function AutismForm({ goBack }) {
 function Landing({ onStart }) {
   return (
     <div className="background">
-      <CursorTrail />
+      {/*<CursorTrail />*/}
       <img src={require('./BOGV.gif')} alt="BOGV" className="bogv-gif" />
       <div style={{width: '100%'}}>
         <h1 className="title" style={{marginBottom: '3rem', fontSize: '3rem'}}>AutismScope</h1>
         <div style={{display: 'flex', justifyContent: 'center'}}>
           <button className="landing-btn" onClick={onStart}>
-            START PREDICTION <span className="arrow">&#8594;</span>
+            START PREDICTION 
           </button>
         </div>
       </div>
